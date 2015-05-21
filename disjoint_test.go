@@ -18,7 +18,6 @@ func TestMergeSets(t *testing.T) {
 	bill := MakeSet("Bill")
 	ted := MakeSet("Ted")
 	rufus := MakeSet("Rufus")
-	plato := MakeSet("Plato")
 
 	bill.Union(ted)
 	rufus.Union(ted)
@@ -32,15 +31,14 @@ func TestMergeSets(t *testing.T) {
 	}
 
 	socrates := MakeSet("Socrates")
-	death := MakeSet("Socrates")
+	plato := MakeSet("Plato")
+	death := MakeSet("Death")
+
+	socrates.Union(plato)
 	bill.Union(socrates)
 	bill.Union(death)
 
-	if socrates.Find() != death.Find() {
-		t.Error("Single sets should belong to themselves")
-	}
-
-	if plato.Find() != plato && plato.Find() == bill.Find() {
+	if plato.Find() != death.Find() {
 		t.Error("Single sets should belong to themselves")
 	}
 }
